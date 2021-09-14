@@ -3,7 +3,11 @@
     <div class="content">
       <v-row class="row">
         <v-col cols="6" class="tabs"> <add-tab></add-tab> </v-col>
-        <v-col cols="6" class="tabs"> </v-col>
+        <v-col cols="6" class="tabs">
+          <div v-for="td in getTodos" v-bind:key="td" style="width: 100%">
+            <list :content="td" />
+          </div>
+        </v-col>
       </v-row>
     </div>
   </div>
@@ -11,8 +15,14 @@
 
 <script>
 import addTab from "../components/addTab.vue";
+import List from "../components/list.vue";
 export default {
-  components: { addTab },
+  components: { addTab, List },
+  computed: {
+    getTodos() {
+      return this.$store.state.todos;
+    },
+  },
 };
 </script>
 
@@ -31,6 +41,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
     }
   }
 }
