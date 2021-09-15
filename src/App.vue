@@ -18,7 +18,8 @@ export default {
 
 <style lang="scss">
 @import "~vuetify/src/components/VStepper/_variables.scss";
-.backG {
+.backG,
+body {
   background-color: $backgroundC !important;
 }
 </style>

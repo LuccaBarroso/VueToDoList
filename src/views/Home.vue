@@ -1,14 +1,12 @@
 <template>
   <div>
     <div class="content">
-      <v-row class="row">
-        <v-col cols="6" class="tabs"> <add-tab></add-tab> </v-col>
-        <v-col cols="6" class="tabs">
-          <div v-for="td in getTodos" v-bind:key="td" style="width: 100%">
-            <list :content="td" />
-          </div>
-        </v-col>
-      </v-row>
+      <div class="tabs"><add-tab></add-tab></div>
+      <div class="tabs">
+        <div v-for="(td, i) in getTodos" v-bind:key="i" style="width: 100%">
+          <list :content="td.textContent" :id="i" :done="td.done" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -28,20 +26,26 @@ export default {
 
 <style lang="scss" scoped>
 .content {
+  display: flex;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  .row {
+  .tabs {
     height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .content {
+    flex-direction: column;
     .tabs {
-      height: 100%;
-      width: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      width: 90%;
     }
   }
 }
