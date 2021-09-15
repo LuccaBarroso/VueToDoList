@@ -2,7 +2,6 @@
   <div class="addTodoBar">
     <v-card elevation="24" class="contentTodo">
       <input type="text" class="mt-6" v-model="newTodo" />
-      <p>{{ this.$store.state.todos }}</p>
       <button class="px-8 my-6" @click="addTodoToState">Add</button>
     </v-card>
   </div>

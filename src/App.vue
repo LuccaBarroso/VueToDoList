@@ -22,4 +22,7 @@ export default {
 body {
   background-color: $backgroundC !important;
 }
+* {
+  font-family: $mainFont;
+}
 </style>
