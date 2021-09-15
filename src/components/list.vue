@@ -25,7 +25,7 @@
         <v-btn v-if="done" @click="changeStatus(id)" class="undoBtn Btn"
           ><v-icon x-small>fas fa-undo</v-icon></v-btn
         >
-        <v-btn class="deleteBtn Btn"
+        <v-btn @click="removeTodo(id)" class="deleteBtn Btn"
           ><v-icon x-small>fas fa-trash</v-icon></v-btn
         >
       </template>
@@ -48,7 +48,7 @@ export default {
     done: Boolean,
   },
   methods: {
-    ...mapMutations(["editTodo", "changeStatus"]),
+    ...mapMutations(["editTodo", "changeStatus", "removeTodo"]),
     switchStatus() {
       if (!this.isEditing) {
         this.changeStatus(this.id);
