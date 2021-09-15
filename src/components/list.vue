@@ -1,38 +1,49 @@
 <template>
   <div class="listItem mx-auto">
-    <v-card
-      v-click-outside="clickOutside"
-      elevation="24"
-      :class="{ listContent: true, active: done }"
-    >
-      <div @click="switchStatus">
-        <input
-          class="listTextContent"
-          type="text"
-          ref="email"
-          v-model="localText"
-          :disabled="!isEditing"
-        />
-      </div>
-      <v-spacer></v-spacer>
-      <template v-if="!isEditing">
-        <v-btn v-if="!done" class="checkBtn Btn" @click="changeStatus(id)"
-          ><v-icon x-small>fas fa-check</v-icon></v-btn
-        >
-        <v-btn v-if="!done" class="editBtn Btn" @click.prevent="editTxt"
-          ><v-icon x-small>fas fa-edit</v-icon></v-btn
-        >
-        <v-btn v-if="done" @click="changeStatus(id)" class="undoBtn Btn"
-          ><v-icon x-small>fas fa-undo</v-icon></v-btn
-        >
-        <v-btn @click="removeTodo(id)" class="deleteBtn Btn"
-          ><v-icon x-small>fas fa-trash</v-icon></v-btn
-        >
-      </template>
-      <v-btn v-else @click="saveEditing" class="saveBtn Btn"
-        ><v-icon x-small>fas fa-save</v-icon></v-btn
+    <v-form>
+      <v-card
+        v-click-outside="clickOutside"
+        elevation="24"
+        :class="{ listContent: true, active: done }"
       >
-    </v-card>
+        <div @click="switchStatus">
+          <input
+            class="listTextContent"
+            type="text"
+            ref="email"
+            v-model="localText"
+            :disabled="!isEditing"
+          />
+        </div>
+        <v-spacer></v-spacer>
+        <template v-if="!isEditing">
+          <button
+            v-if="!done"
+            class="checkBtn"
+            @click.prevent="changeStatus(id)"
+          >
+            <v-icon small class="iconBtn">fas fa-check</v-icon>
+          </button>
+          <button v-if="!done" class="editBtn" @click.prevent="editTxt">
+            <v-icon small class="iconBtn">fas fa-edit</v-icon>
+          </button>
+          <button v-if="done" @click.prevent="changeStatus(id)" class="undoBtn">
+            <v-icon small class="iconBtn">fas fa-undo</v-icon>
+          </button>
+          <button @click.prevent="removeTodo(id)" class="deleteBtn">
+            <v-icon small class="iconBtn">fas fa-trash</v-icon>
+          </button>
+        </template>
+        <button
+          type="submit"
+          v-else
+          @click.prevent="saveEditing"
+          class="saveBtn"
+        >
+          <v-icon small class="iconBtn">fas fa-save</v-icon>
+        </button>
+      </v-card>
+    </v-form>
   </div>
 </template>
 
@@ -94,7 +105,7 @@ export default {
     justify-content: center;
     background-color: $myGrey;
     border-radius: 30px;
-    height: 30px;
+    height: 35px;
     .flex-row {
       display: flex;
       flex-direction: row;
@@ -103,27 +114,29 @@ export default {
     .listTextContent {
       outline: none;
       width: 100%;
-      font-family: $mainFont;
-      font-size: 20px;
+      font-size: 24px;
       overflow: hidden;
       padding: 0 10px;
       cursor: default;
       color: white;
     }
-    .Btn {
+    button {
       border-radius: 0px;
       background-color: $lighterGrey;
-      color: $detailsC;
-      height: 30px;
-      width: 20px;
+      height: 35px;
+      width: 35px;
       min-width: 20px;
+      margin-left: 2px;
+      .iconBtn {
+        color: $detailsC !important;
+      }
     }
-    .Btn:hover {
+    button:hover {
       animation: grow 0.5s forwards ease-in-out;
     }
     .deleteBtn,
     .saveBtn {
-      border-radius: 0 25px 25px 0;
+      border-radius: 0 25px 25px 0 !important;
     }
   }
   @keyframes grow {
@@ -131,7 +144,7 @@ export default {
       transform: scale(1);
     }
     100% {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
   }
 }

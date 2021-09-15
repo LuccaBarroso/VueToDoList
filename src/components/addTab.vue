@@ -1,9 +1,16 @@
 <template>
   <div class="addTodoBar">
-    <v-card elevation="24" class="contentTodo">
-      <input type="text" class="mt-6" v-model="newTodo" />
-      <button class="px-8 my-6" @click="addTodoToState">Add</button>
-    </v-card>
+    <v-form>
+      <v-card elevation="24" class="contentTodo">
+        <input
+          type="text"
+          class="mt-6"
+          v-model="newTodo"
+          placeholder="What do You Plan on Doing?"
+        />
+        <button class="px-8 my-6" @click.prevent="addTodoToState">Add</button>
+      </v-card>
+    </v-form>
   </div>
 </template>
 
