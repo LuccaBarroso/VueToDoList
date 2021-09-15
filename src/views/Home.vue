@@ -1,5 +1,6 @@
 <template>
   <div>
+    <delete-all-btn />
     <div class="content">
       <div class="tabs"><add-tab></add-tab></div>
       <div class="tabs">
@@ -14,10 +15,11 @@
 
 <script>
 import addTab from "../components/addTab.vue";
+import DeleteAllBtn from "../components/deleteAllBtn.vue";
 import EmptyList from "../components/emptyList.vue";
 import List from "../components/list.vue";
 export default {
-  components: { addTab, List, EmptyList },
+  components: { addTab, List, EmptyList, DeleteAllBtn },
   computed: {
     getTodos() {
       return this.$store.state.todos;

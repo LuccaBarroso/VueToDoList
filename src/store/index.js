@@ -38,6 +38,10 @@ export default new Vuex.Store({
         }
       });
     },
+    deleteAll(state) {
+      console.log("delete all");
+      state.todos = [];
+    },
   },
   actions: {},
   modules: {},
