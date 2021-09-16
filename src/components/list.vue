@@ -113,7 +113,6 @@ export default {
     }
     .listTextContent {
       outline: none;
-      width: 100%;
       font-size: 24px;
       overflow: hidden;
       padding: 0 10px;

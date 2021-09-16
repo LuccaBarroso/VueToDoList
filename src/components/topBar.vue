@@ -12,19 +12,24 @@
         <line
           x1="4.32296"
           y1="44.4498"
-          x2="140.45"
-          y2="10.67703"
+          x2="100.45"
+          y2="20.67703"
           stroke="#710000"
           stroke-width="3"
           stroke-linecap="round"
         />
       </svg>
     </div>
+    <v-spacer></v-spacer>
+    <delete-all-btn />
   </div>
 </template>
 
 <script>
-export default {};
+import deleteAllBtn from "./deleteAllBtn.vue";
+export default {
+  components: { deleteAllBtn },
+};
 </script>
 
 <style scoped lang="scss">

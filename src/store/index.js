@@ -5,12 +5,24 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: [
-      { textContent: "valha", done: true },
-      { textContent: "aaa", done: false },
-    ],
+    todos: [],
   },
-  getters: {},
+  getters: {
+    getTotal(state) {
+      return state.todos.length;
+    },
+    getPercentage(state, getters) {
+      const total = getters.getTotal;
+      const done = state.todos.reduce(function(acc, cur) {
+        return cur.done ? acc + 1 : acc;
+      }, 0);
+      if (total === 0) {
+        return "0%";
+      }
+      const percentage = (done / total) * 100;
+      return percentage + "%";
+    },
+  },
   mutations: {
     addTodo(state, textContent) {
       state.todos = [...state.todos, { textContent: textContent, done: false }];

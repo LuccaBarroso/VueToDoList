@@ -1,6 +1,6 @@
 <template>
   <div>
-    <delete-all-btn />
+    <loading-bar />
     <div class="content">
       <div class="tabs"><add-tab></add-tab></div>
       <div class="tabs">
@@ -15,11 +15,11 @@
 
 <script>
 import addTab from "../components/addTab.vue";
-import DeleteAllBtn from "../components/deleteAllBtn.vue";
 import EmptyList from "../components/emptyList.vue";
 import List from "../components/list.vue";
+import LoadingBar from "../components/loadingBar.vue";
 export default {
-  components: { addTab, List, EmptyList, DeleteAllBtn },
+  components: { addTab, List, EmptyList, LoadingBar },
   computed: {
     getTodos() {
       return this.$store.state.todos;
@@ -31,12 +31,8 @@ export default {
 <style lang="scss" scoped>
 .content {
   display: flex;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   .tabs {
+    padding: 150px 0;
     height: 100%;
     width: 50%;
     display: flex;
