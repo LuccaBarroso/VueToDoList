@@ -32,13 +32,13 @@ export default new Vuex.Store({
   mutations: {
     addTodo(state, textContent) {
       state.todos = [...state.todos, { textContent: textContent, done: false }];
-      localStorage.setItem("todos", JSON.stringify(this.getTodos));
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     removeTodo(state, id) {
       state.todos = state.todos.filter(function(cur, i) {
         return i != id;
       });
-      localStorage.setItem("todos", JSON.stringify(this.getTodos));
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     editTodo(state, { id, newText }) {
       state.todos = state.todos.map(function(cur, i) {
@@ -48,7 +48,7 @@ export default new Vuex.Store({
           return cur;
         }
       });
-      localStorage.setItem("todos", JSON.stringify(this.getTodos));
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     changeStatus(state, id) {
       state.todos = state.todos.map(function(cur, i) {
@@ -58,12 +58,12 @@ export default new Vuex.Store({
           return cur;
         }
       });
-      localStorage.setItem("todos", JSON.stringify(this.getTodos));
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     deleteAll(state) {
       console.log("delete all");
       state.todos = [];
-      localStorage.setItem("todos", JSON.stringify(this.getTodos));
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     LocalStorageTodos(state) {
       const localTodos = JSON.parse(localStorage.getItem("todos"));
