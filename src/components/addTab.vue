@@ -45,6 +45,7 @@ export default {
 <style lang="scss" scoped>
 @import "~vuetify/src/components/VStepper/_variables.scss";
 .addTodoBar {
+  padding: 300px 0;
   width: 80%;
   .contentTodo {
     display: flex;

@@ -22,15 +22,23 @@ export default new Vuex.Store({
       const percentage = (done / total) * 100;
       return percentage + "%";
     },
+    getLength(state) {
+      return state.todos.length;
+    },
+    getTodos(state) {
+      return state.todos;
+    },
   },
   mutations: {
     addTodo(state, textContent) {
       state.todos = [...state.todos, { textContent: textContent, done: false }];
+      localStorage.setItem("todos", JSON.stringify(this.getTodos));
     },
     removeTodo(state, id) {
       state.todos = state.todos.filter(function(cur, i) {
         return i != id;
       });
+      localStorage.setItem("todos", JSON.stringify(this.getTodos));
     },
     editTodo(state, { id, newText }) {
       state.todos = state.todos.map(function(cur, i) {
@@ -40,6 +48,7 @@ export default new Vuex.Store({
           return cur;
         }
       });
+      localStorage.setItem("todos", JSON.stringify(this.getTodos));
     },
     changeStatus(state, id) {
       state.todos = state.todos.map(function(cur, i) {
@@ -49,10 +58,16 @@ export default new Vuex.Store({
           return cur;
         }
       });
+      localStorage.setItem("todos", JSON.stringify(this.getTodos));
     },
     deleteAll(state) {
       console.log("delete all");
       state.todos = [];
+      localStorage.setItem("todos", JSON.stringify(this.getTodos));
+    },
+    LocalStorageTodos(state) {
+      const localTodos = JSON.parse(localStorage.getItem("todos"));
+      if (localTodos) state.todos = localTodos;
     },
   },
   actions: {},

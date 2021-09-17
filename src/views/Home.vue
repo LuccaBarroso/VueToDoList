@@ -4,10 +4,8 @@
     <div class="content">
       <div class="tabs"><add-tab></add-tab></div>
       <div class="tabs">
-        <empty-list v-if="getTodos.length === 0" />
-        <div v-for="(td, i) in getTodos" v-bind:key="i" style="width: 100%">
-          <list :content="td.textContent" :id="i" :done="td.done" />
-        </div>
+        <empty-list v-if="getLength === 0" />
+        <list v-else />
       </div>
     </div>
   </div>
@@ -18,21 +16,26 @@ import addTab from "../components/addTab.vue";
 import EmptyList from "../components/emptyList.vue";
 import List from "../components/list.vue";
 import LoadingBar from "../components/loadingBar.vue";
+import { mapMutations, mapActions } from "vuex";
 export default {
   components: { addTab, List, EmptyList, LoadingBar },
-  computed: {
-    getTodos() {
-      return this.$store.state.todos;
-    },
+  methods: {
+    ...mapMutations(["LocalStorageTodos"]),
+    ...mapActions(["getLength"]),
+  },
+  created() {
+    console.log("created");
+    this.LocalStorageTodos();
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .content {
   display: flex;
+  align-items: center;
   .tabs {
-    padding: 150px 0;
+    padding-bottom: 50px;
     height: 100%;
     width: 50%;
     display: flex;
