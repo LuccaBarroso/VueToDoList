@@ -5,8 +5,8 @@
         v-click-outside="clickOutside"
         elevation="24"
         :class="{ listContent: true, active: done }"
+        style="width: 100%"
       >
-        <p>{{ id }}</p>
         <div @click="switchStatus">
           <input
             class="listTextContent"
@@ -89,7 +89,7 @@ export default {
 @import "~vuetify/src/components/VStepper/_variables.scss";
 
 .listItem {
-  width: 80%;
+  width: 100%;
   padding: 5px 0;
   .active {
     .listTextContent {
