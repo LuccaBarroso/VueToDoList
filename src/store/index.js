@@ -22,28 +22,36 @@ export default new Vuex.Store({
       const percentage = (done / total) * 100;
       return percentage + "%";
     },
-    getLength(state) {
-      return state.todos.length;
-    },
     getTodos(state) {
       return state.todos;
     },
+    getNextId(state, getters) {
+      let lastIndex = getters.getTotal - 1;
+      if (lastIndex < 0) {
+        return 0;
+      }
+      let nextId = state.todos[lastIndex].id + 1;
+      return nextId;
+    },
   },
   mutations: {
-    addTodo(state, textContent) {
-      state.todos = [...state.todos, { textContent: textContent, done: false }];
+    addTodo(state, [textContent, id]) {
+      state.todos = [
+        ...state.todos,
+        { textContent: textContent, done: false, id: id },
+      ];
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     removeTodo(state, id) {
-      state.todos = state.todos.filter(function(cur, i) {
-        return i != id;
+      state.todos = state.todos.filter(function(cur) {
+        return cur.id != id;
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     editTodo(state, { id, newText }) {
-      state.todos = state.todos.map(function(cur, i) {
-        if (i == id) {
-          return { textContent: newText, done: false };
+      state.todos = state.todos.map(function(cur) {
+        if (cur.id == id) {
+          return { textContent: newText, done: false, id: id };
         } else {
           return cur;
         }
@@ -51,9 +59,9 @@ export default new Vuex.Store({
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     changeStatus(state, id) {
-      state.todos = state.todos.map(function(cur, i) {
-        if (i == id) {
-          return { textContent: cur.textContent, done: !cur.done };
+      state.todos = state.todos.map(function(cur) {
+        if (cur.id == id) {
+          return { textContent: cur.textContent, done: !cur.done, id: id };
         } else {
           return cur;
         }
@@ -61,7 +69,6 @@ export default new Vuex.Store({
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     deleteAll(state) {
-      console.log("delete all");
       state.todos = [];
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },

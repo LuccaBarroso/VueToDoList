@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -24,17 +24,19 @@ export default {
   },
   methods: {
     ...mapMutations(["addTodo"]),
+    ...mapGetters(["getNextId"]),
     addTodoToState() {
       if (this.newTodo !== "") {
-        this.addTodo(
+        this.addTodo([
           this.newTodo
             .toString()
             .split(" ")
             .map(function(el) {
               return el.charAt(0).toUpperCase() + el.slice(1);
             })
-            .join(" ")
-        );
+            .join(" "),
+          this.getNextId(),
+        ]);
         this.newTodo = "";
       }
     },

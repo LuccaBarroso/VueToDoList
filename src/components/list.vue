@@ -1,8 +1,15 @@
 <template>
   <div>
-    <div v-for="(td, i) in getTodos()" v-bind:key="i" style="width: 100%">
-      <listItem :content="td.textContent" :id="i" :done="td.done" />
-    </div>
+    <list-item
+      v-for="{ textContent, done, id } in getTodos()"
+      v-bind:key="id"
+      class="listItem"
+      :content="textContent"
+      :id="id"
+      :done="done"
+      style="width: 100%"
+    >
+    </list-item>
   </div>
 </template>
 
@@ -19,4 +26,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.listItem {
+  width: 100%;
+}
+</style>

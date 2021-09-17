@@ -6,6 +6,7 @@
         elevation="24"
         :class="{ listContent: true, active: done }"
       >
+        <p>{{ id }}</p>
         <div @click="switchStatus">
           <input
             class="listTextContent"
@@ -73,12 +74,10 @@ export default {
       if (this.isEditing) this.cancelEditing();
     },
     cancelEditing() {
-      console.log("cancelado");
       this.localText = this.content;
       this.isEditing = false;
     },
     saveEditing() {
-      console.log("salvo");
       this.isEditing = false;
       this.editTodo({ id: this.id, newText: this.localText });
     },
