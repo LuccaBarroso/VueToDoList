@@ -1,13 +1,19 @@
 <template>
-  <div class="bar">
-    <div class="backBar"></div>
-    <div class="loadingBar" :style="{ height: getPercentage() }"></div>
-  </div>
+  <grow-height duration="1.5s" appear>
+    <div class="bar">
+      <div class="backBar"></div>
+      <grow-height duration="1s" appear>
+        <div class="loadingBar" :style="{ height: getPercentage() }"></div>
+      </grow-height>
+    </div>
+  </grow-height>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import growHeight from "./transitions/growHeight.vue";
 export default {
+  components: { growHeight },
   methods: {
     ...mapGetters(["getPercentage"]),
   },

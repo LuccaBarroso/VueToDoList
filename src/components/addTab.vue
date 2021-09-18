@@ -1,22 +1,26 @@
 <template>
   <div class="addTodoBar">
     <v-form>
-      <v-card elevation="24" class="contentTodo">
-        <input
-          type="text"
-          class="mt-6"
-          v-model="newTodo"
-          placeholder="What do You Plan on Doing?"
-        />
-        <button class="px-8 my-6" @click.prevent="addTodoToState">Add</button>
-      </v-card>
+      <show-bigger-cards appear>
+        <v-card elevation="24" class="contentTodo">
+          <input
+            type="text"
+            class="mt-6"
+            v-model="newTodo"
+            placeholder="What do You Plan on Doing?"
+          />
+          <button class="px-8 my-6" @click.prevent="addTodoToState">Add</button>
+        </v-card>
+      </show-bigger-cards>
     </v-form>
   </div>
 </template>
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import ShowBiggerCards from "./transitions/showBiggerCards.vue";
 export default {
+  components: { ShowBiggerCards },
   data() {
     return {
       newTodo: "",
@@ -47,7 +51,6 @@ export default {
 <style lang="scss" scoped>
 @import "~vuetify/src/components/VStepper/_variables.scss";
 .addTodoBar {
-  padding: 300px 0;
   width: 80%;
   .contentTodo {
     display: flex;

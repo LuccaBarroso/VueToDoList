@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loading-bar />
+    <progress-bar />
     <div class="content">
       <div class="tabs"><add-tab></add-tab></div>
       <div class="tabs">
@@ -15,10 +15,10 @@
 import addTab from "../components/addTab.vue";
 import EmptyList from "../components/emptyList.vue";
 import List from "../components/list.vue";
-import LoadingBar from "../components/loadingBar.vue";
+import progressBar from "../components/progressBar.vue";
 import { mapMutations, mapGetters } from "vuex";
 export default {
-  components: { addTab, List, EmptyList, LoadingBar },
+  components: { addTab, List, EmptyList, progressBar },
   methods: {
     ...mapMutations(["LocalStorageTodos"]),
     ...mapGetters(["getTotal"]),
@@ -35,7 +35,7 @@ export default {
   align-items: center;
   .tabs {
     padding-bottom: 50px;
-    height: 100%;
+    height: 90vh;
     width: 50%;
     display: flex;
     align-items: center;

@@ -1,25 +1,29 @@
 <template>
   <div>
-    <h1 class="mytitle heading-3">TODO</h1>
-    <div class="detailBar">
-      <svg
-        width="203"
-        height="48"
-        viewBox="0 0 203 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <line
-          x1="4.32296"
-          y1="44.4498"
-          x2="100.45"
-          y2="20.67703"
-          stroke="#710000"
-          stroke-width="3"
-          stroke-linecap="round"
-        />
-      </svg>
-    </div>
+    <appear-from-top duration="1s" appear>
+      <h1 class="mytitle heading-3">TODO</h1>
+    </appear-from-top>
+    <appear-from-top duration="1s" appear>
+      <div class="detailBar">
+        <svg
+          width="203"
+          height="48"
+          viewBox="0 0 203 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="4.32296"
+            y1="44.4498"
+            x2="100.45"
+            y2="20.67703"
+            stroke="#710000"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    </appear-from-top>
     <v-spacer></v-spacer>
     <delete-all-btn />
   </div>
@@ -27,8 +31,9 @@
 
 <script>
 import deleteAllBtn from "./deleteAllBtn.vue";
+import AppearFromTop from "./transitions/appearFromTop.vue";
 export default {
-  components: { deleteAllBtn },
+  components: { deleteAllBtn, AppearFromTop },
 };
 </script>
 

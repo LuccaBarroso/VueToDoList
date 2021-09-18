@@ -1,14 +1,22 @@
 <template>
   <button class="deleteAll" @click="deleteAll">
-    <v-icon> fas fa-trash </v-icon>
-    <p>Delete</p>
-    <p>All</p>
+    <appear-from-top appear>
+      <v-icon> fas fa-trash </v-icon>
+    </appear-from-top>
+    <appear-from-top appear>
+      <p>Delete</p>
+    </appear-from-top>
+    <appear-from-top appear>
+      <p>All</p>
+    </appear-from-top>
   </button>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
+import appearFromTop from "./transitions/appearFromTop.vue";
 export default {
+  components: { appearFromTop },
   methods: {
     ...mapMutations(["deleteAll"]),
   },

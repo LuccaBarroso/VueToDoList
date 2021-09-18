@@ -1,14 +1,15 @@
 <template>
-  <transition
-    name="grow"
-    enter-active-class="fadeIn"
-    leave-active-class="fadeOut"
+  <component
+    :is="type"
+    :tag="tag"
+    enter-active-class="starting"
+    leave-active-class="ending"
+    move-class="moving"
     v-bind="$attrs"
     v-on="hooks"
-    appear
   >
-    <slot> </slot>
-  </transition>
+    <slot></slot>
+  </component>
 </template>
 
 <script>
@@ -18,8 +19,19 @@ export default {
       type: String,
       default: "1s",
     },
+    group: {
+      type: Boolean,
+      default: false,
+    },
+    tag: {
+      type: String,
+      default: "div",
+    },
   },
   computed: {
+    type() {
+      return this.group ? "transition-group" : "transition";
+    },
     hooks() {
       return {
         beforeEnter: this.setDuration,
@@ -37,22 +49,30 @@ export default {
     cleanUpDuration(el) {
       el.style.animationDuration = "";
     },
+    setAbsolutePosition(el) {
+      if (this.group) {
+        el.style.position = "absolute";
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
-.fadeIn {
-  animation: grow forwards ease-in-out;
+.starting {
+  animation: growHeight ease-in-out forwards;
 }
-.fadeOut {
-  animation: grow reverse ease-in-out;
+.ending {
+  animation: growHeight ease-in-out reverse;
+}
+.moving {
+  animation: growHeight 0.5s ease-in-out;
 }
 
-@keyframes grow {
+@keyframes growHeight {
   0% {
     opacity: 0;
-    font-size: 0;
+    height: 0;
   }
   100% {
     opacity: 1;
