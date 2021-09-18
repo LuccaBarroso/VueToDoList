@@ -8,11 +8,11 @@ export default new Vuex.Store({
     todos: [],
   },
   getters: {
-    getTotal(state) {
+    getLength(state) {
       return state.todos.length;
     },
     getPercentage(state, getters) {
-      const total = getters.getTotal;
+      const total = getters.getLength;
       const done = state.todos.reduce(function(acc, cur) {
         return cur.done ? acc + 1 : acc;
       }, 0);
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       return state.todos;
     },
     getNextId(state, getters) {
-      let lastIndex = getters.getTotal - 1;
+      let lastIndex = getters.getLength - 1;
       if (lastIndex < 0) {
         return 0;
       }

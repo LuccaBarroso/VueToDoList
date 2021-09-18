@@ -4,7 +4,7 @@
     <div class="content">
       <div class="tabs"><add-tab></add-tab></div>
       <div class="tabs">
-        <empty-list v-if="getTotal() == 0" />
+        <empty-list v-if="getLength() == 0" />
         <list v-else />
       </div>
     </div>
@@ -21,7 +21,7 @@ export default {
   components: { addTab, List, EmptyList, progressBar },
   methods: {
     ...mapMutations(["LocalStorageTodos"]),
-    ...mapGetters(["getTotal"]),
+    ...mapGetters(["getLength"]),
   },
   created() {
     this.LocalStorageTodos();
@@ -35,7 +35,6 @@ export default {
   align-items: center;
   .tabs {
     padding-bottom: 50px;
-    height: 90vh;
     width: 50%;
     display: flex;
     align-items: center;

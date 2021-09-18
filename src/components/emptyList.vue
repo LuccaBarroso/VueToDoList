@@ -21,6 +21,10 @@ export default {
 <style scoped lang="scss">
 @import "~vuetify/src/components/VStepper/_variables.scss";
 div {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   p {
     text-align: center;
     font-weight: 300;

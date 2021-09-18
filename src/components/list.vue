@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list" :style="{ height: tooLarge }">
     <show-cards group appear>
       <list-item
         v-for="{ textContent, done, id } in getTodos()"
@@ -25,13 +25,23 @@ export default {
     showCards,
   },
   methods: {
-    ...mapGetters(["getTodos"]),
+    ...mapGetters(["getTodos", "getLength"]),
+  },
+  computed: {
+    tooLarge() {
+      return this.getLength() > 17 ? "auto" : "80vh";
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
-.listItem {
-  width: 100%;
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .listItem {
+    width: 100%;
+  }
 }
 </style>
