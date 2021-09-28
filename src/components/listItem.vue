@@ -5,7 +5,6 @@
         v-click-outside="clickOutside"
         elevation="24"
         :class="{ listContent: true, active: done }"
-        style="width: 100%"
       >
         <div @click="switchStatus">
           <input
@@ -143,6 +142,14 @@ export default {
     }
     100% {
       transform: scale(1.2);
+    }
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .listItem {
+    width: 95% !important;
+    .listTextContent {
+      width: 100%;
     }
   }
 }

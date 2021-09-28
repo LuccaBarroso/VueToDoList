@@ -24,7 +24,7 @@ export default {
 @import "~vuetify/src/components/VStepper/_variables.scss";
 
 .bar {
-  height: 80%;
+  height: 70%;
   position: absolute;
   right: 10px;
   display: flex;
@@ -42,6 +42,11 @@ export default {
     background-color: $detailsC;
     position: absolute;
     right: 10px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .bar {
+    right: 3px;
   }
 }
 </style>

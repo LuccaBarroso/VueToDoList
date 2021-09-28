@@ -1,7 +1,7 @@
 <template>
   <div class="list" :style="{ height: tooLarge }">
     <show-cards group appear>
-      <list-item
+      <list-items
         v-for="{ textContent, done, id } in getTodos()"
         v-bind:key="id"
         class="listItem"
@@ -10,18 +10,18 @@
         :done="done"
         style="width: 100%"
       >
-      </list-item>
+      </list-items>
     </show-cards>
   </div>
 </template>
 
 <script>
-import listItem from "./listItem.vue";
+import listItems from "./listItem.vue";
 import { mapGetters } from "vuex";
 import showCards from "./transitions/showCards.vue";
 export default {
   components: {
-    listItem,
+    listItems,
     showCards,
   },
   methods: {

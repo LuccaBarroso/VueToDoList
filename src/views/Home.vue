@@ -44,6 +44,7 @@ export default {
 }
 @media only screen and (max-width: 1000px) {
   .content {
+    padding-top: 120px;
     flex-direction: column;
     .tabs {
       width: 90%;

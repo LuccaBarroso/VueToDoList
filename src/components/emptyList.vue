@@ -31,4 +31,12 @@ div {
     font-size: 30px;
   }
 }
+@media only screen and (max-width: 1000px) {
+  div {
+    height: auto;
+    p {
+      font-size: 20px;
+    }
+  }
+}
 </style>

@@ -33,7 +33,7 @@ export default {
 <style scoped lang="scss">
 button {
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: 10px;
   right: 10px;
