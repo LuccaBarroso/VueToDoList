@@ -3,7 +3,7 @@
     class="teste
 "
   >
-    <a href="https://github.com/LuccaBarroso" class=" todoLink">
+    <a href="https://www.luccabarroso.com.br" target="_blank" class=" todoLink">
       <appear-from-top duration="1s" appear>
         <p class=" mytitle">TODO</p>
       </appear-from-top>
@@ -35,7 +35,7 @@
 <script>
 import AppearFromTop from "./transitions/appearFromTop.vue";
 export default {
-  components: { AppearFromTop },
+  components: { AppearFromTop }
 };
 </script>
 

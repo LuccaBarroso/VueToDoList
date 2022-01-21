@@ -2,7 +2,9 @@
   <div>
     <progress-bar />
     <div class="content">
-      <div class="tabs"><add-tab></add-tab></div>
+      <div class="tabs">
+        <add-tab></add-tab>
+      </div>
       <div class="tabs">
         <empty-list v-if="getLength() == 0" />
         <list v-else />

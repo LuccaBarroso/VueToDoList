@@ -7,7 +7,7 @@
             type="text"
             class="mt-6"
             v-model="newTodo"
-            placeholder="What do You Plan on Doing?"
+            placeholder="What is your next task?"
           />
           <button class="px-8 my-6" @click.prevent="addTodoToState">Add</button>
         </v-card>
@@ -23,7 +23,7 @@ export default {
   components: { ShowBiggerCards },
   data() {
     return {
-      newTodo: "",
+      newTodo: ""
     };
   },
   methods: {
@@ -39,12 +39,12 @@ export default {
               return el.charAt(0).toUpperCase() + el.slice(1);
             })
             .join(" "),
-          this.getNextId(),
+          this.getNextId()
         ]);
         this.newTodo = "";
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
