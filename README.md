@@ -1,4 +1,4 @@
-# todo-list
+# Todo-List
 
 The well-known to-do website, one the first in which I used vue.js, it was a simple yet useful experience, put some extra effort to make these cool transitions and this unique styling.
 
