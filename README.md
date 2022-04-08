@@ -5,7 +5,6 @@ The well-known to-do website, one the first in which I used vue.js, it was a sim
 Nesse projeto, eu fiz o tão conhecido \"to-do\". Um dos meus primeiros projetos feitos com vue.js, apesar de ser um site simples, coloquei um pouco de tempo a mais para que o site tivesse animações e um estilo único.
 
 link to online demo:
-
 https://practical-feynman-177483.netlify.app/
 
 ## Project setup
