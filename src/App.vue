@@ -11,7 +11,6 @@ export default {
   components: { topBar },
   name: "App",
   data: () => ({
-    //
   }),
 };
 </script>
